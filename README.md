@@ -7,3 +7,4 @@ https://limu.ml でご使用できます
 ## API v2の利用方法
 <font color="red">API v3がまもなくリリースされますのでそちらを使うことを推奨します</font>
 
+<font color="red">赤色のテスト</font>
