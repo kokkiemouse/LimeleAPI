@@ -12,4 +12,8 @@ https://limu.ml でご使用できます
 https://riyblog.shop/limele/api/v2/
 ```
 
-上記のURLに `url` パラメータをつけてリクエストをするとJSONをレスポンスします
+上記のURLに `url` パラメータをつけてリクエストをすると下記のようなJSONをレスポンスします
+
+```json
+{ "ver":"v2", "msg":"200", "url":"https://limu.ml/XXXXX" }
+```
