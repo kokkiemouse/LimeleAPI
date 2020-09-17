@@ -12,4 +12,4 @@ https://limu.ml でご使用できます
 https://riyblog.shop/limele/api/v2/
 ```
 
-https://riyblog.shop/limele/api/v2/
+上記のURLに `url` パラメータをつけてリクエストをするとJSONをレスポンスします
