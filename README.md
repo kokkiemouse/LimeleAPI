@@ -17,3 +17,6 @@ https://riyblog.shop/limele/api/v2/
 ```json
 { "ver":"v2", "msg":"200", "url":"https://limu.ml/XXXXX" }
 ```
+
+正常に作成できた場合は `msg` キーに `200` がレスポンスされます。
+また、エラーやパラメータに値が存在しない場合は `msg` キーに404がレスポンスされます
