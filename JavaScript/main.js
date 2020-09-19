@@ -13,5 +13,13 @@ xhr.onload = function() {
 }
 
 function dom(res){ //dom
-    
+    document.write(res.ver + "<br/>");
+    document.write(res.msg + "<br/>");
+    document.write(res.url + "<br/>");
 }
+
+/**
+ * LimeleAPI v2
+ * JavaScriptサンプルコード
+ * 2020/9/19
+ */
