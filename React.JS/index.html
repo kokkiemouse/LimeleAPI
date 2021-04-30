@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            LimeleAPI v2 on React.JS
+        </title>
+        <!-- React Library -->
+        <script 
+            src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"
+            integrity="sha384-7Er69WnAl0+tY5MWEvnQzWHeDFjgHSnlQfDDeWUvv8qlRXtzaF/pNo18Q2aoZNiO"
+            crossorigin
+        ></script>
+        <script
+            src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"
+            integrity="sha384-vj2XpC1SOa8PHrb0YlBqKN7CQzJYO72jz4CkDQ+ePL1pwOV4+dn05rPrbLGUuvCv"
+            crossorigin
+        ></script>
+        <script
+            src="https://unpkg.com/@babel/standalone@7.13.13/babel.min.js"
+            integrity="sha384-5a7c5/GkaCITOh374LENmvBVmw8ts0nszrwqZcCTAhsLvTruncpgJvabCBiaxolO"
+            crossorigin
+        ></script>
+        <style>
+            .input_box{
+                width: 100%;
+                font-size: 1rem;
+                height: calc(1.5em + .75rem + 2px);
+            }
+            .container{
+                width: 80%;      
+                margin: 0 auto;
+            }
+            .submit_button{
+                margin-top: 1vw;
+                width: 100%;
+                font-size: 1rem;
+                height: 3vw;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="text/babel">
+            class Result_box extends React.Component{
+                constructor(props){
+                    super(props)
+                }
+                render(){
+                    return(
+                    <div className="ResultBoxDiv">
+                        <a href={this.props.url}>{this.props.url}</a>
+                    </div>)
+                }
+            }
+            class MainPage extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state={original_url:"",dest_url:""}
+                    this.handleChange=this.handleChange.bind(this)
+                    this.handleSubmit=this.handleSubmit.bind(this)
+                }
+                handleChange(event){
+                    this.setState({original_url: event.target.value});
+                }
+                handleSubmit(event){
+                    fetch("https://riyblog.shop/limele/api/v2/?url=" + this.state.original_url)
+                        .then((response) => response.json())
+                            .then((responseJson) => {
+                                this.setState({
+                                    dest_url:responseJson.url
+                                })
+                            })
+                            .catch((error) => {
+                                console.error(error)
+                            })
+                    event.preventDefault();
+                }
+                render(){
+                    return(
+                        <div className="container">
+                            <form onSubmit={this.handleSubmit}>
+                                <label>
+                                    <h1>Limele on React.JS</h1><br />
+                                    <input className="input_box" type="text" value={this.state.original_url} onChange={this.handleChange} />
+                                </label><br />
+                                <input className="submit_button" type="submit" value="生成" />
+                            </form>
+                            <div>
+                                <Result_box url={this.state.dest_url} />
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(
+                <MainPage />,
+                document.getElementById("app")
+            )
+        </script>
+    </body>
+</html>
